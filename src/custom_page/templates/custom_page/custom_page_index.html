@@ -1,0 +1,20 @@
+{% extends "custom_page/custom_page_base.html" %}
+{% load staticfiles %}
+
+{% block bodyParams %} ng-app="customPage" {% endblock %}
+
+{% block container %}
+<div class="container" ng-cloak>
+    <div>
+        <a href="{% url 'custom_page:first' %}">
+            First
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'custom_page:table' %}">
+            Table
+        </a>
+    </div>
+
+</div>
+{% endblock container %}

@@ -1,0 +1,37 @@
+{% extends "custom_page/custom_page_base.html" %}
+{% load staticfiles %}
+
+{% block bodyParams %} ng-app="customPage" ng-controller="TableCustomPageController" ng-cloak {% endblock %}
+
+{% block container %}
+    <div>
+        <br>Key</br>
+        <input type="text" ng-model="tKey" />
+        <br>Value</br>
+        <input type="text" ng-model="tValue" />
+        <br>
+        <button ng-click="clickedAddRow()">Add Row</button>
+        <br>
+        {% verbatim %}
+        {{ formMessage }}
+        {% endverbatim %}
+    </div>
+
+    <div>
+        <table >
+            <thead>
+               <tr>
+                   <th>Key</th>
+                   <th>Value</th>
+               </tr>
+            </thead>
+            <!-- use verbasim for using angular {{ instead of django -->
+            {% verbatim %}
+            <tr ng-repeat="row in viewData" class="ng-scope">
+                <td>{{ row.key }}</td>
+                <td>{{ row.value }}</td>
+            </tr>
+            {% endverbatim %}
+        </table>
+    </div>
+{% endblock container %}
