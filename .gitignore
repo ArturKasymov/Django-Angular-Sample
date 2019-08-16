@@ -1,0 +1,7 @@
+__pycache__/
+pip-log.txt
+build
+*.mo
+*.potgit
+.idea/
+/src/static/libs/*

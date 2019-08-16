@@ -1,0 +1,15 @@
+{% extends "skeleton.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ block.super }}Custom Page {% endblock %}
+
+{% block extrahead %}
+    <link href="{% static 'custom_page/css/custom_page.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'custom_page/js/custom_page.module.js' %}"></script>
+    <script src="{% static 'custom_page/js/custom_page.controller.js' %}"></script>
+    <script src="{% static 'custom_page/js/custom_page.services.js' %}"></script>
+{% endblock %}
