@@ -13,7 +13,7 @@ class TableView(APIView):
     def post(self, request):
         key, value = self._get_post_data(request.data)
         save_pair(key, value)
-        return Response()
+        return Response(status=status.HTTP_200_OK)
 
     @staticmethod
     def _get_query_params(request):

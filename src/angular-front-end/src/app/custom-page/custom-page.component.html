@@ -13,8 +13,8 @@
 </form>
 <table style="border: 1px solid black">
   <tr *ngFor="let row of rows, let i = index">
-    <td style="border: 1px solid black">{{row.name}}</td>
-    <td style="border: 1px solid black">{{row.data}}</td>
+    <td style="border: 1px solid black">{{row.key}}</td>
+    <td style="border: 1px solid black">{{row.value}}</td>
     <td><button (click)="delRow(i)">X</button></td>
   </tr>
 </table>

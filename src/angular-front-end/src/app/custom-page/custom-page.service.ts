@@ -1,26 +1,43 @@
-// this array should be loaded from DB
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+@Injectable()
 export class rowService {
-  //array from DB
+
+    constructor(private http: HttpClient) {
+    }
+
     rows:any[] = [
-    {name: "name1", data: "data1"},
-    {name: "name2", data: "data2"},
-    {name: "name3", data: "data3"},
+    {key: "name1", value: "data1"},
+    {key: "name2", value: "data2"},
+    {key: "name3", value: "data3"},
     ];
 
     getRows(){
-        //this.dataSource.subscribe(data => {this.rows = data});
-        return this.rows;
+        return this.http.get('/api/custom_page/table/');
     }
 
     // write appropriate http requests to delete or add a row in DB
-    addRow(name, data){
-        let newRow = {name: name, data: data};
-        this.rows.push(newRow);
+    addRow(key, value){
+        let newRow = {key: key, value: value};
+        //this.rows.push(newRow);
+        console.log(newRow);
+        this.http.post('/api/custom_page/table/',newRow, this.getHttpOptions()).toPromise()
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+        console.log("added");
         return false;
     }
     deleteRow(delIndex){
         this.rows.splice(delIndex, 1);
         return false;
+    }
+
+    getHttpOptions() {
+      return {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      };
     }
 }

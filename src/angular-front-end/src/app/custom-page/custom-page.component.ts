@@ -7,20 +7,25 @@ import { rowService } from './custom-page.service';
   })
 export class CustomPageComponent implements OnInit {
     title: string;
-    rows:any[];
-    constructor(private rowServ: rowService) {
+    private rows;
+    constructor(private _rowServ: rowService) {
         this.title = 'Conspectus preproject sample';
-        this.rows = [];
     }
 
     ngOnInit(){
-        this.rows = this.rowServ.getRows();
+        this._rowServ.getRows().subscribe(
+            data => {
+                this.rows=data['data'];
+            },
+            err => console.error(err),
+            () => console.log('data getted')
+        );
     }
     addNewRow(name, data){
-        this.rowServ.addRow(name, data);
+        this._rowServ.addRow(name, data);
         return false;
     }
     delRow(delIndex){
-        this.rowServ.deleteRow(delIndex);
+        this._rowServ.deleteRow(delIndex);
     }
 }
