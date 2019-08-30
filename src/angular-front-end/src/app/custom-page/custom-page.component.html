@@ -1,0 +1,20 @@
+<div><h3>Welcome to angular <i>{{title}}</i></h3></div>
+<br>
+<form (submit)="addNewRow(name.value, data.value)">
+  <input type="text" placeholder="Key" #name>
+  <br>
+  <br>
+  <input type="text" placeholder="Data" #data>
+  <br>
+  <br>
+  <button type="submit">Add</button>
+  <br>
+  <br>
+</form>
+<table style="border: 1px solid black">
+  <tr *ngFor="let row of rows, let i = index">
+    <td style="border: 1px solid black">{{row.name}}</td>
+    <td style="border: 1px solid black">{{row.data}}</td>
+    <td><button (click)="delRow(i)">X</button></td>
+  </tr>
+</table>

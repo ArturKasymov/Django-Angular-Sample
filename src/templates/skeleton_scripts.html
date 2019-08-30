@@ -1,51 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     {% load staticfiles %}
-    {% load compress %}
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{% block title %} TraineeProject :: {% endblock %}</title>
 
-        <!-- Loading js frameworks -->
-        {% compress js %}
-        <script src="{% static 'libs/angular/angular.min.js' %}"></script>
-        <script src="{% static 'libs/angular-route/angular-route.min.js' %}"></script>
-        {% endcompress %}
-
-        <!-- Loading css frameworks -->
         {% block styles %}
-        {% compress css %}
 
-        <link rel="stylesheet" href="{% static 'libs/angular-ui-grid/ui-grid.min.css' %}">
-        <link rel="stylesheet" href="{% static 'libs/angular-ui-switch/angular-ui-switch.min.css' %}">
 
-        {% endcompress %}
         {% endblock styles %}
 
-        <!-- Custom tags for the head tag -->
         {% block extrahead %}
         {% endblock extrahead %}
 
     </head>
-    <body {% block bodyParams %} ng-app="general" {% endblock %} ng-init="username='{{ request.user }}'">
+    <body>
     {% block skeleton %}
     {% endblock skeleton %}
 
-    <!-- External libs -->
     {% block scripts %}
-    {% compress js %}
-    <script src="{% static 'libs/angular-ui-switch/angular-ui-switch.min.js' %}"></script>
-    <script src="{% static 'libs/angular-vs-repeat/dist/angular-vs-repeat.min.js' %}"></script>
-    <script src="{% static 'libs/angular-resource/angular-resource.min.js' %}"></script>
-    <script src="{% static 'libs/ng-debounce/angular-debounce.js' %}"></script>
-    {% endcompress %}
-
-
-     <!--Site scripts -->
-    {% compress js %}
-    {% endcompress %}
     {% endblock scripts %}
     </body>
 

@@ -1,10 +1,8 @@
 {% extends "custom_page/custom_page_base.html" %}
 {% load staticfiles %}
 
-{% block bodyParams %} ng-app="customPageIndex" {% endblock %}
-
 {% block container %}
-<div class="container" ng-cloak>
+<div class="container">
     <div>
         <a href="{% url 'custom_page:index' %}">
             First

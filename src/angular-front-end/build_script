@@ -1,0 +1,1 @@
+ng build --outputPath=../custom_page/static/custom_page/js --index=src/index.html --main=src/app/custom-page/custom-page-main.ts
